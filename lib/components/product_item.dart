@@ -20,7 +20,7 @@ class ProductItem extends StatelessWidget {
         footer: GridTileBar(
           backgroundColor: Colors.black87,
           leading: Consumer<Product>(
-            builder: (cxt, value, _) => IconButton(
+            builder: (cxt, product, _) => IconButton(
               onPressed: () {
                 product.toggleFavorite();
               },
