@@ -4,29 +4,20 @@ import 'package:shop/components/product_item.dart';
 import 'package:shop/models/product_list.dart';
 import 'package:shop/models/produtc.dart';
 
+import '../components/Product_grid.dart';
+
 class ProductOverviewPage extends StatelessWidget {
   const ProductOverviewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductList>(context);
-    final List<Product> loadedProducts = provider.items;
-    return Scaffold(
+        return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Minha loja"),
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(10),
-        itemCount: loadedProducts.length,
-        itemBuilder: (ctx, index) =>
-            ProductItem(product: loadedProducts[index]),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10),
-      ),
+      body: const ProductGrid(),
     );
   }
 }
+
