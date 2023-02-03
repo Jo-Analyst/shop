@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,15 +9,17 @@ import 'product_item.dart';
 
 class ProductGrid extends StatelessWidget {
   const ProductGrid({super.key});
+  
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductList>(context);
     final List<Product> loadedProducts = provider.items;
+    
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: loadedProducts.length,
-      itemBuilder: (ctx, index) => ChangeNotifierProvider(
-        create: (_) => loadedProducts[index],
+      itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
+        value: loadedProducts[index],
         child: const ProductItem(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
