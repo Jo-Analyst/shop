@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,19 +8,21 @@ import '../models/product.dart';
 import 'product_item.dart';
 
 class ProductGrid extends StatelessWidget {
-  const ProductGrid({super.key});
-  
+  bool showFavoriteOnly;
+  ProductGrid(this.showFavoriteOnly, {super.key});
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductList>(context);
-    final List<Product> loadedProducts = provider.items;
+    final List<Product> loadedProducts =
+        showFavoriteOnly ? provider.favoriteItems : provider.items;
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),
       itemCount: loadedProducts.length,
       itemBuilder: (ctx, index) => ChangeNotifierProvider.value(
         value: loadedProducts[index],
-        child: ProductItem(),
+        child:  ProductItem(),
       ),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
