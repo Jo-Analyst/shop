@@ -11,7 +11,7 @@ class CartItemWidget extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(
         horizontal: 15,
-        vertical: 25,
+        vertical: 4,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
