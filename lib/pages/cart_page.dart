@@ -38,12 +38,14 @@ class CartPage extends StatelessWidget {
                   Chip(
                     backgroundColor: Theme.of(context).colorScheme.primary,
                     label: Text(
-                      NumberFormat('R\$ #.00', 'pt-BR ').format(cart.totalAmount),
+                      cart.totalAmount == 0
+                          ? 'R\$ 0,00'
+                          : NumberFormat('R\$ #.00', 'pt-BR ')
+                              .format(cart.totalAmount),
                       style: TextStyle(
-                          color: Theme.of(context)
-                              .primaryTextTheme
-                              .headline6
-                              ?.color),
+                        color:
+                            Theme.of(context).primaryTextTheme.headline6?.color,
+                      ),
                     ),
                   ),
                   const Spacer(),
